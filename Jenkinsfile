@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'mcr.microsoft.com/windows/nanoserver:1909' //'hello-world'
+            image 'hello-world'
+            args '-i'
         }
     }
     //agent any
