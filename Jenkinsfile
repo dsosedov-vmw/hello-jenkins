@@ -1,8 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'hello-world'
-            args '-i'
+            image 'mcr.microsoft.com/dotnet/core/sdk:3.1' //'hello-world'
         }
     }
     //agent any
@@ -10,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'echo "Hello world"'
+                dotnet --version
             }
         }
         stage('Test') {
