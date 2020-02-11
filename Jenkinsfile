@@ -1,8 +1,11 @@
 pipeline {
-    //agent {
-    //    docker { image 'hello-world' }
-    //}
-    agent any
+    agent {
+        docker {
+            label 'windows'
+            image 'hello-world'
+        }
+    }
+    //agent any
 
     stages {
         stage('Build') {
