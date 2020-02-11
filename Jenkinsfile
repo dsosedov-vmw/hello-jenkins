@@ -8,15 +8,17 @@ pipeline {
 
     stages {
         stage('Build') {
-            //steps {
+            steps {
             //    sh 'dotnet'
-            //}
-            script {
-                def sout = new StringBuilder(), serr = new StringBuilder()
-                def proc = 'ls /badDir'.execute()
-                proc.consumeProcessOutput(sout, serr)
-                proc.waitForOrKill(1000)
-                println "out> $sout err> $serr"
+                script {
+                    def command = "git --version"
+                    def proc = command.execute()
+                    proc.waitFor()
+
+                    println "Process exit code: ${proc.exitValue()}"
+                    println "Std Err: ${proc.err.text}"
+                    println "Std Out: ${proc.in.text}"
+                }
             }
         }
         stage('Test') {
