@@ -8,8 +8,15 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                sh 'dotnet'
+            //steps {
+            //    sh 'dotnet'
+            //}
+            script {
+                def sout = new StringBuilder(), serr = new StringBuilder()
+                def proc = 'ls /badDir'.execute()
+                proc.consumeProcessOutput(sout, serr)
+                proc.waitForOrKill(1000)
+                println "out> $sout err> $serr"
             }
         }
         stage('Test') {
