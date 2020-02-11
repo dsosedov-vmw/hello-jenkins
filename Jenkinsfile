@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'hello-world' }
+        docker { image 'hello-world:nanoserver' }
     }
 
     stages {
