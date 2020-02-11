@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        docker { image 'hello-world:nanoserver' }
-    }
+    //agent {
+    //    docker { image 'hello-world' }
+    //}
+    agent any
 
     stages {
         stage('Build') {
